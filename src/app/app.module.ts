@@ -7,7 +7,9 @@ import { GridComponent } from './components/grid/grid.component';
 import { StoreModule } from "@ngrx/store";
 import {HttpClientModule} from "@angular/common/http";
 import { EffectsModule } from '@ngrx/effects';
-
+import {ReactiveFormsModule} from '@angular/forms';
+import {tableReducer} from './store/table/table.reducers';
+import {TableEffects} from './store/table/table.effects';
 
 
 @NgModule({
@@ -15,14 +17,15 @@ import { EffectsModule } from '@ngrx/effects';
     AppComponent,
     GridComponent
   ],
-  imports: [
-    BrowserModule,
-    GridModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([])
-  ],
+	imports: [
+		BrowserModule,
+		GridModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		StoreModule.forRoot({measurementInfo: tableReducer}),
+		EffectsModule.forRoot([TableEffects]),
+		ReactiveFormsModule
+	],
   providers: [],
   bootstrap: [AppComponent]
 })

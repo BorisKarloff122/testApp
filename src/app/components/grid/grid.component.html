@@ -1,11 +1,17 @@
+<form [formGroup]="descriptionsForm">
+  <select formControlName="groupDescription">
+    <option *ngFor="let option of groupDescData$ | async">{{option}}</option>
+  </select>
+
+  <select formControlName="measurementDescription">
+    <option *ngFor="let option of measurementDescData$ | async">{{option}}</option>
+  </select>
+
+  <button (click)="onRun()">Run</button>
+</form>
+
 <div>
-  <select>
-    <option></option>
-
-  </select>
-
-  <select>
-    <option></option>
-
-  </select>
+  <div *ngFor="let item of tableData$ | async; let i = index">
+    <p>{{i}} {{item.kpiUserName}}</p>
+  </div>
 </div>

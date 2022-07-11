@@ -1,6 +1,4 @@
 export interface IApiRequestParams{
-  grouptype: string,
-  groupdescription: string,
-  measurementdescription: string,
-  resultrows: string
+  groupDescription: string,
+  measurementDescription: string,
 }
