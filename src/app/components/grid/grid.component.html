@@ -1,17 +1,47 @@
-<form [formGroup]="descriptionsForm">
-  <select formControlName="groupDescription">
-    <option *ngFor="let option of groupDescData$ | async">{{option}}</option>
-  </select>
+<kendo-toolbar>
+  <kendo-toolbar-dropdownbutton
+    text="Customer_Outcome"
+    [data]="(groupDescData$ | async)!">
+  </kendo-toolbar-dropdownbutton>
 
-  <select formControlName="measurementDescription">
-    <option *ngFor="let option of measurementDescData$ | async">{{option}}</option>
-  </select>
+  <kendo-toolbar-dropdownbutton
+    text="Understand"
+    [data]="(measurementDescData$ | async)!">
+  </kendo-toolbar-dropdownbutton>
+</kendo-toolbar>
 
-  <button (click)="onRun()">Run</button>
-</form>
+<kendo-grid title="External Metrics" [kendoGridBinding]="(tableData$ | async)!"
+  kendoGridSelectBy="id">
+  <kendo-grid-column
+    [width]="365"
+    title="Team Name">
+      <ng-template kendoGridCellTemplate>
+        <div class="cell-value">
+        </div>
+      </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column
+    title="Today"
+    [width]="138">
+    <ng-template kendoGridCellTemplate>
 
-<div>
-  <div *ngFor="let item of tableData$ | async; let i = index">
-    <p>{{i}} {{item.kpiUserName}}</p>
-  </div>
-</div>
+      <div class="cell-value"></div>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column
+    title="MTD"
+    [width]="138">
+    <ng-template kendoGridCellTemplate>
+
+      <div class="cell-value"></div>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column title="YTD"
+                     [width]="138">
+    <ng-template kendoGridCellTemplate>
+
+      <div class="cell-value"></div>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
+
