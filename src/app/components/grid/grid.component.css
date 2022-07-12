@@ -1,8 +1,8 @@
-.header-container{
+.header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:8px;
+  padding: 8px;
   position: relative;
   box-shadow: rgba(81, 81, 81, 0.6) 0px 1px 2px;
   text-shadow: rgba(81, 81, 81, 0.2) 0px 1px 1px;
@@ -11,55 +11,45 @@
   border-radius: 8px 8px 0 0;
 }
 
-.buttons-container{
-  display:flex;
+.buttons-container {
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.header{
-  font-size:15px;
-  width:55%;
+.header {
+  font-size: 15px;
+  width: 55%;
 }
 
-.dropdown-container{
+.dropdown-container {
   margin: 0 8px;
 }
 
-kendo-dropdownlist{
+kendo-dropdownlist {
   color: rgb(230, 230, 230) !important;
-  font-size:12px;
+  font-size: 12px;
   background: rgba(51, 51, 51, 0.4) !important;
 }
 
-.run-button{
+.run-button {
   color: rgb(255, 255, 255);
   background-color: rgb(97, 143, 176);
   border-color: rgb(83, 131, 165);
 }
 
-::ng-deep .k-grid-header{
-  color: rgb(230, 230, 230);
-  background: rgba(51, 51, 51, 0.4);
+kendo-dropdownlist {
+  min-width: 170px;
 }
 
-.k-grid{
-  color: rgb(230, 230, 230) !important;
-  background: rgba(51, 51, 51, 0.4)!important;
+.red {
+  color: red;
 }
 
-kendo-dropdownlist{
-  min-width:170px;
-}
-
-.red{
-  color:red;
-}
-
-.green{
+.green {
   color:lightgreen;
 }
 
-.yellow{
-  color:yellow;
+.yellow {
+  color: yellow;
 }

@@ -1,6 +1,6 @@
-import { IGridDataResults } from "./gridDataResults";
+import {IGridDataResults} from "./gridDataResults";
 
-export interface IApiResponse{
+export interface IApiResponse {
   totalResultCount: number,
   results: IGridDataResults[]
 }

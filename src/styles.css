@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500&display=swap');
 
-body{
+body {
   background-color: rgba(102, 105, 104, 0.9);
   background-image: radial-gradient(farthest-side ellipse at 10% 0, rgba(102, 105, 104, 0.9), rgba(93, 112, 119, 0.89), rgba(160, 174, 150, 0.9));
   background-image: -webkit-radial-gradient(10% 0, farthest-side ellipse, rgba(102, 105, 104, 0.9), rgba(93, 112, 119, 0.89), rgba(160, 174, 150, 0.9));

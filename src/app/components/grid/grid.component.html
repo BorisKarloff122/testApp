@@ -1,51 +1,46 @@
 <div class="header-container">
   <div class="header">External Metrics</div>
-  <div [formGroup]="descriptionsForm"  class="buttons-container">
-    <div class="dropdown-container"
-         *ngIf="(groupDescData$ | async) as groupDesc">
-      <kendo-dropdownlist
-        formControlName="groupDescription"
-        [data]="groupDesc">
+  <div class="buttons-container" [formGroup]="descriptionsForm" >
+
+    <div class="dropdown-container" *ngIf="(groupDescData$ | async) as groupDesc">
+      <kendo-dropdownlist formControlName="groupDescription" [data]="groupDesc">
       </kendo-dropdownlist>
     </div>
-    <div class="dropdown-container"
-         *ngIf="(measurementDescData$ | async) as measureDesc">
-      <kendo-dropdownlist
-        formControlName="measurementDescription"
-        [data]="measureDesc">
+
+    <div class="dropdown-container" *ngIf="(measurementDescData$ | async) as measureDesc">
+      <kendo-dropdownlist formControlName="measurementDescription" [data]="measureDesc">
       </kendo-dropdownlist>
     </div>
   </div>
+
   <div class="button-container">
-    <button class="run-button" (click)="onRun()" kendoButton>Run</button>
+    <button class="run-button" kendoButton (click)="onRun()">Run</button>
   </div>
 
 </div>
+
 <kendo-grid title="External Metrics"
-  [kendoGridBinding]="(tableData$ | async)!"
-  [scrollable]="'none'"
-  [sortable]="false">
-  <kendo-grid-column
-    [width]="365"
-    title="Team Name">
-      <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="cell-value">
-          {{dataItem.kpiTeamName}}
-        </div>
-      </ng-template>
+            [kendoGridBinding]="(tableData$ | async)!"
+            [scrollable]="'none'"
+            [sortable]="false">
+
+  <kendo-grid-column title="Team Name" [width]="365">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div class="cell-value">
+        {{dataItem.kpiTeamName}}
+      </div>
+    </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column
-    title="Today"
-    [width]="138">
+
+  <kendo-grid-column title="Today" [width]="138">
     <ng-template kendoGridCellTemplate let-dataItem>
       <div [ngClass]="dataItem.todayAvg.color">
         {{dataItem.todayAvg.value}}
       </div>
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column
-    title="MTD"
-    [width]="138">
+
+  <kendo-grid-column title="MTD" [width]="138">
     <ng-template kendoGridCellTemplate let-dataItem>
       <div [ngClass]="dataItem.monthAvg.color">
         {{dataItem.monthAvg.value}}
@@ -55,8 +50,11 @@
 
   <kendo-grid-column title="YTD" [width]="138">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <div [ngClass]="dataItem.yearAvg.color" >{{dataItem.yearAvg.value}}</div>
+      <div [ngClass]="dataItem.yearAvg.color">
+        {{dataItem.yearAvg.value}}
+      </div>
     </ng-template>
   </kendo-grid-column>
+
 </kendo-grid>
 

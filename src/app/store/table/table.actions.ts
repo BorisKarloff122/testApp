@@ -1,6 +1,6 @@
-import { createAction, props } from "@ngrx/store";
-import { gridActions } from "./table.actions.enum";
-import { IGridDataResults } from '../../models/gridDataResults';
+import {createAction, props} from "@ngrx/store";
+import {gridActions} from "./table.actions.enum";
+import {IGridDataResults} from '../../models/gridDataResults';
 
 
 export const getGridData = createAction(

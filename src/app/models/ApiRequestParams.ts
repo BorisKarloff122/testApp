@@ -1,4 +1,4 @@
-export interface IApiRequestParams{
+export interface IApiRequestParams {
   groupDescription: string,
   measurementDescription: string,
 }

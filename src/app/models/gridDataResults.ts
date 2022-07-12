@@ -1,4 +1,4 @@
-export interface IGridDataResults{
+export interface IGridDataResults {
   externalMiId: number;
   kpiGroupType: string;
   kpiGroupDescription: string;
@@ -14,7 +14,7 @@ export interface IGridDataResults{
 
 export type KpiPeriod = 'Today' | 'MonthTD' | 'YearTD';
 
-export interface IGridDataNumber{
+export interface IGridDataNumber {
   value: string;
   color: string;
 }

@@ -26,7 +26,8 @@
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/kendo-custom.css"
             ],
             "scripts": []
           },
