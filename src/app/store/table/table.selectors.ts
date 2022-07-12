@@ -1,5 +1,5 @@
-import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {TableState} from './table.reducers';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { TableState } from './table.reducers';
 
 export const tableStateSelector = createFeatureSelector<TableState>('measurementInfo');
 

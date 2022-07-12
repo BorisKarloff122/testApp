@@ -10,24 +10,28 @@ import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
 import { tableReducer } from './store/table/table.reducers';
 import { TableEffects } from './store/table/table.effects';
-import {ToolBarModule} from "@progress/kendo-angular-toolbar";
+import { ToolBarModule } from "@progress/kendo-angular-toolbar";
+import { DropDownListModule } from "@progress/kendo-angular-dropdowns";
+import {ButtonModule} from "@progress/kendo-angular-buttons";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GridComponent
+    GridComponent,
   ],
-	imports: [
-		BrowserModule,
-		GridModule,
-		BrowserAnimationsModule,
-		HttpClientModule,
-		StoreModule.forRoot({measurementInfo: tableReducer}),
-		EffectsModule.forRoot([TableEffects]),
+  imports: [
+    BrowserModule,
+    GridModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    StoreModule.forRoot({measurementInfo: tableReducer}),
+    EffectsModule.forRoot([TableEffects]),
     ToolBarModule,
-		ReactiveFormsModule
-	],
+    ReactiveFormsModule,
+    DropDownListModule,
+    ButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

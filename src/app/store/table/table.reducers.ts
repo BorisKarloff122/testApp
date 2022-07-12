@@ -1,6 +1,6 @@
-import {IGridDataResults} from '../../models/gridDataResults';
-import {createReducer, on} from '@ngrx/store';
-import {getGridDataError, getGridDataSuccess} from './table.actions';
+import { IGridDataResults } from '../../models/gridDataResults';
+import { createReducer, on } from '@ngrx/store';
+import { getGridDataError, getGridDataSuccess } from './table.actions';
 
 export interface TableState {
   rowsData: IGridDataResults[],
