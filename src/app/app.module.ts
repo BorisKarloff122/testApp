@@ -12,7 +12,7 @@ import { tableReducer } from './store/table/table.reducers';
 import { TableEffects } from './store/table/table.effects';
 import { ToolBarModule } from "@progress/kendo-angular-toolbar";
 import { DropDownListModule } from "@progress/kendo-angular-dropdowns";
-import {ButtonModule} from "@progress/kendo-angular-buttons";
+import { ButtonModule } from "@progress/kendo-angular-buttons";
 
 
 @NgModule({

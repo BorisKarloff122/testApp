@@ -52,8 +52,8 @@
       </div>
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column title="YTD"
-                     [width]="138">
+
+  <kendo-grid-column title="YTD" [width]="138">
     <ng-template kendoGridCellTemplate let-dataItem>
       <div [ngClass]="dataItem.yearAvg.color" >{{dataItem.yearAvg.value}}</div>
     </ng-template>

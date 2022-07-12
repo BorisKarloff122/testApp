@@ -41,6 +41,7 @@ export class DataService {
 
 }
 
+// mocks for data since API was blocked by CORS error
 
 const groupDescriptions = ["Customer_Outcome","Doing_the_Right_Thing","Effectiveness"];
 const measurmentDescriptions: any = {

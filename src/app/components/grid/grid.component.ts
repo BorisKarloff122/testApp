@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { DataService } from "../../services/data.service";
-import { AbstractControl, FormBuilder } from "@angular/forms";
-import { IDescriptionsForm } from "../../models/DescriprionsForm";
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {DataService} from "../../services/data.service";
+import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
+import {IDescriptionsForm} from "../../models/DescriprionsForm";
 import {
   asyncScheduler,
   BehaviorSubject,
@@ -13,11 +13,12 @@ import {
   switchMap,
   tap
 } from "rxjs";
-import { TableState } from "../../store/table/table.reducers";
-import { Store } from "@ngrx/store";
-import { getGridData } from "../../store/table/table.actions";
-import { tableDataSelector } from "../../store/table/table.selectors";
-import {IGridData, IGridDataNumber, IGridDataResults} from 'src/app/models/gridDataResults';
+import {TableState} from "../../store/table/table.reducers";
+import {Store} from "@ngrx/store";
+import {getGridData} from "../../store/table/table.actions";
+import {tableDataSelector} from "../../store/table/table.selectors";
+import {IGridData} from 'src/app/models/gridDataResults';
+import {mapGridData} from 'src/app/shared/utils';
 
 @Component({
   selector: 'app-grid',
@@ -25,15 +26,13 @@ import {IGridData, IGridDataNumber, IGridDataResults} from 'src/app/models/gridD
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit, AfterViewInit {
-  public descriptionsForm = this.fb.group<IDescriptionsForm>({
+  public descriptionsForm: FormGroup = this.fb.group<IDescriptionsForm>({
     groupDescription: this.fb.control(''),
     measurementDescription: this.fb.control('')
   });
   public tableData$!: Observable<IGridData[]>;
-
   public runRequestSource = new BehaviorSubject<boolean>(true);
-  public runRequest$ = this.runRequestSource.asObservable().pipe(distinctUntilChanged());
-
+  public runRequest$: Observable<any> = this.runRequestSource.asObservable().pipe(distinctUntilChanged());
   public groupDescData$!: Observable<string[]>;
   public measurementDescData$: Observable<string[]> = this.groupDesc$.pipe(
     filter(Boolean),
@@ -60,14 +59,11 @@ export class GridComponent implements OnInit, AfterViewInit {
         this.store.dispatch(getGridData({groupDescription, measurementDescription}))
       }),
       switchMap(() => this.store.select(tableDataSelector)),
-      map((gridData) => {
-        console.log(this.mapGridData(gridData));
-        return this.mapGridData(gridData);
-      }),
+      map((gridData) => mapGridData(gridData)),
     )
   }
 
-  public ngAfterViewInit() {
+  public ngAfterViewInit(): void {
     this.groupDescData$ = this.dataService.getGroupDescriptions().pipe(
       observeOn(asyncScheduler),
       tap((payload) => this.groupDescControl?.setValue(payload[0], {emitEvent: true}))
@@ -94,31 +90,4 @@ export class GridComponent implements OnInit, AfterViewInit {
     return this.measurementDescControl?.valueChanges;
   }
 
-
-  private mapGridData(data: IGridDataResults[]): IGridData[] {
-    return Array.from(new Set(data.map(item => item.kpiTeamName).filter(name => !!name)))
-      .map(name => {
-        const selectedData = data.filter(item => item.kpiTeamName === name);
-        return {
-          kpiTeamName: name,
-          todayAvg: getAvg(selectedData.filter(el => el.kpiPeriod === 'Today').map(el => el.kpiAchievementPercent)),
-          monthAvg: getAvg(selectedData.filter(el => el.kpiPeriod === 'MonthTD').map(el => el.kpiAchievementPercent)),
-          yearAvg: getAvg(selectedData.filter(el => el.kpiPeriod === 'YearTD').map(el => el.kpiAchievementPercent))
-        };
-      });
-
-    function getAvg(arr: number[]): IGridDataNumber {
-      const value = +(arr.reduce((curr, el) => (curr + el), 0) / arr.length).toFixed(2);
-      return {
-        value: parseFloat(value * 100 + '').toFixed(2) + '%',
-        color: getPercentColor(value)
-      }
-    }
-
-    function getPercentColor(percent: number): string {
-      if (percent >= 0.8) return 'green'
-      else if (percent < 0.8 && percent > 0.6) return 'yellow'
-      else return 'red'
-    }
-  }
 }
