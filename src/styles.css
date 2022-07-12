@@ -14,10 +14,5 @@ body {
   color: #e6e6e6 !important;
   line-height: 1.5;
   letter-spacing: 0.025em;
-
-}
-
-.k-grid tbody tr:not(.k-detail-row):hover, .k-grid tbody tr:not(.k-detail-row).k-state-hover, .k-grid tbody tr:not(.k-detail-row).k-hover{
-  background-color:rgba(51, 51, 51, 0.25)
 }
 
