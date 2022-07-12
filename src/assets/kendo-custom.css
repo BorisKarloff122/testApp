@@ -1,0 +1,13 @@
+.k-grid {
+  color: rgb(230, 230, 230) !important;
+  background: rgba(51, 51, 51, 0.4) !important;
+}
+
+.k-grid-header {
+  color: rgb(230, 230, 230);
+  background: rgba(51, 51, 51, 0.4);
+}
+
+.k-grid tbody tr:not(.k-detail-row):hover, .k-grid tbody tr:not(.k-detail-row).k-state-hover, .k-grid tbody tr:not(.k-detail-row).k-hover{
+  background-color:rgba(51, 51, 51, 0.25)
+}
